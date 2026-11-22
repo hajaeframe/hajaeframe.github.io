@@ -4,9 +4,9 @@
   <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-j+54+Kpi2Pz3NZzwFzR9sQiG+KjXYfvR4tMajFF+s+4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'none'"><meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-ko="주차장 비용정산 자동화 · 하재민" data-en="주차장 비용정산 자동화 · JAEMIN HA">주차장 비용정산 자동화 · 하재민</title>
-  <meta name="description" content="제각각이던 주차장 정산 조건을 클러스터로 다시 나누고 새 정산식과 시뮬레이터를 만들어 수기 정산을 줄였습니다.">
+  <meta name="description" content="새 서비스가 늘며 월평균 31%까지 생기던 수기 정산을, 정산 조건을 클러스터로 다시 나눈 자동생성 로직과 시뮬레이터로 줄였습니다.">
   <meta property="og:title" content="주차장 비용정산 자동화 · 하재민">
-  <meta property="og:description" content="제각각이던 주차장 정산 조건을 클러스터로 다시 나누고 새 정산식과 시뮬레이터를 만들어 수기 정산을 줄였습니다.">
+  <meta property="og:description" content="새 서비스가 늘며 월평균 31%까지 생기던 수기 정산을, 정산 조건을 클러스터로 다시 나눈 자동생성 로직과 시뮬레이터로 줄였습니다.">
   <meta property="og:image" content="https://hajaeframe.github.io/static/img/settlement.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Syne:wght@800&display=swap">
-  <link rel="stylesheet" href="/static/theme.css?v=17">
-  <link rel="stylesheet" href="/static/style.css?v=17">
-  <link rel="stylesheet" href="/static/pages.css?v=17">
+  <link rel="stylesheet" href="/static/theme.css?v=21">
+  <link rel="stylesheet" href="/static/style.css?v=21">
+  <link rel="stylesheet" href="/static/pages.css?v=21">
   <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}</script>
 </head>
 <body class="subpage curtain">
@@ -36,7 +36,7 @@
         <div class="ph-text">
           <div class="kicker">Automation · 쏘카 · 2024 </div>
           <h1>주차장 비용정산 자동화</h1>
-          <p class="ph-desc">제각각이던 주차장 정산 조건을 클러스터로 다시 나누고 새 정산식과 시뮬레이터를 만들어 수기 정산을 줄였습니다.</p>
+          <p class="ph-desc">새 서비스가 늘며 월평균 31%까지 생기던 수기 정산을, 정산 조건을 클러스터로 다시 나눈 자동생성 로직과 시뮬레이터로 줄였습니다.</p>
           <div class="ph-kpis n2"><div class="kpi"><b>70%</b><span>정산 처리 시간 단축</span></div><div class="kpi"><b>12%p</b><span>수기 정산 감소</span></div></div>
         </div>
         <figure class="ph-cover"><img src="/static/img/settlement.png" alt=""></figure>
@@ -54,17 +54,16 @@
   <main class="sheet" id="sheet"><div class="page">
     <div class="case-study project">
       <aside class="cs-aside">
-        <dl class="cs-facts"><div class=""><dt>회사</dt><dd>쏘카</dd></div><div class=""><dt>기간</dt><dd>2023.10 – 2024.01</dd></div></dl>
-        <div class="cs-toc"><div class="cs-toc-title">목차</div><ul><li><a href="#action">해결과 실행</a></li><li><a href="#result">성과</a></li></ul></div>
+        <dl class="cs-facts"><div class="wide"><dt>내 역할</dt><dd><b class="role-head">PM</b> 정산 조건을 클러스터로 다시 나눈 정산식과 호환 로직을 설계하고, 미리 돌려 보는 비용정산 시뮬레이터를 기획</dd></div><div class=""><dt>회사</dt><dd>쏘카</dd></div><div class=""><dt>기간</dt><dd>2023.10 – 2024.01</dd></div><div class=""><dt>협업</dt><dd>PM(1), 사업운영(2), BE(1), QA(2)</dd></div></dl>
+        <div class="cs-toc"><div class="cs-toc-title">목차</div><ul><li><a href="#background">배경 및 현황</a></li><li><a href="#problem">문제 정의</a></li><li><a href="#action">해결과 실행</a></li><li><a href="#result">성과</a></li></ul></div>
       </aside>
       <article class="cs-main">
-        <div class="cs-steps"><section class="cs-step " id="action"><span class="cs-num">01</span><div class="cs-step-body"><h2>해결과 실행</h2><ul><li>정산 클러스터 재분류 및 신규 정산식 설계</li><li>기존·신규 케이스 호환 로직과 비용정산 시뮬레이터 기획</li></ul></div></section><section class="cs-step result" id="result"><span class="cs-num">02</span><div class="cs-step-body"><h2>성과</h2><ul><li>정산 처리 시간 70% 단축</li><li>수기 정산 비율 12%p 감소</li></ul></div></section></div>
-        <div class="prose"></div>
-        <nav class="pager cards"><a class="pg-card " href="/projects/fms/"><span class="pg-thumb"><img src="/static/img/fms.png" alt="" loading="lazy"></span><span class="pg-text"><small>이전 프로젝트</small><b>차량 관제 시스템(FMS) 대시보드 설계</b><em>쏘카 · 2022</em></span></a><a class="pg-card next" href="/projects/smartkey/"><span class="pg-thumb"><img src="/static/img/smartkey.png" alt="" loading="lazy"></span><span class="pg-text"><small>다음 프로젝트</small><b>스마트키 노티 위젯 고도화 (안드로이드)</b><em>쏘카 · 2024</em></span></a></nav>
+        <div class="cs-steps"><section class="cs-step " id="background"><span class="cs-num">01</span><div class="cs-step-body"><h2>배경 및 현황</h2><ul><li>쏘카존 주차장 비용은 자동생성 로직으로 정산해 왔지만, 새로운 서비스와 주차장 유형이 늘며 신규 정산 케이스가 생김</li><li>수기 정산이 월평균 31% 발생</li></ul></div></section><section class="cs-step " id="problem"><span class="cs-num">02</span><div class="cs-step-body"><h2>문제 정의</h2><ul><li>기존 비용정산 자동생성 로직이 신규 케이스에 대응하지 못해 수기 정산이 늘어남</li><li>수기 정산이 쏘카존 운영과 차량 입출차 관리에 부담</li></ul></div></section><section class="cs-step " id="action"><span class="cs-num">03</span><div class="cs-step-body"><h2>해결과 실행</h2><ul><li>비용정산을 결정하는 조건들을 클러스터로 다시 분류하고, 클러스터 기반의 새 정산식 설계</li><li>기존 케이스와 신규 케이스가 모두 맞도록 호환 로직 설계</li><li>바꾼 정산식을 미리 돌려 볼 수 있는 비용정산 시뮬레이터 기획</li></ul></div></section><section class="cs-step result" id="result"><span class="cs-num">04</span><div class="cs-step-body"><h2>성과</h2><ul><li>비용정산 처리 시간 약 70% 단축</li><li>수기 정산 비율 약 12%p 감소</li></ul></div></section></div>
+        <nav class="pager cards"><a class="pg-card " href="/projects/chatbot/"><span class="pg-thumb"><img src="/static/img/chatbot.jpg" alt="" loading="lazy"></span><span class="pg-text"><small>이전 프로젝트</small><b>LLM 시나리오 기반 AI 챗봇 구축과 운영 효율화</b><em>쏘카 · 2024</em></span></a><a class="pg-card next" href="/projects/fines/"><span class="pg-thumb"><img src="/static/img/fines.jpg" alt="" loading="lazy"></span><span class="pg-text"><small>다음 프로젝트</small><b>과태료 미수금 자동 청구 로직 구축</b><em>쏘카 · 2024</em></span></a></nav>
       </article>
     </div>
   </div></main>
   <div class="outro-space" aria-hidden="true"></div>
-  <script src="/static/site.js?v=17"></script>
+  <script src="/static/site.js?v=21"></script>
 </body>
 </html>
