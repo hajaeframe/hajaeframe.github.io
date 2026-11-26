@@ -36,14 +36,14 @@ const CAR=`<svg class="car" viewBox="0 0 44 22" aria-hidden="true">
     ${c.footnote ? `<div class="footnote">*${esc(c.footnote)}</div>` : ''}
     ${projs.length ? `<div class="pn-block"><h5>${esc(U.careerProjects)}</h5><div class="pn-links">${projs.map((g)=>`<a href="projects/${esc(g.project)}/">${esc(g.label || g.title)}${ICON.arrow}</a>`).join('')}</div></div>` : ''}
   </div>`;}
-let DRIVE=null;function renderCareer(){const r=P.road;const list=P.careers;const d=new Date();const nowM=d.getFullYear()*12+d.getMonth();const start=ym(r.items[0].start);const total=nowM+3-start;const pct=(m)=>((m-start)/total)*100;const items=r.items.map((it,i)=>{const s0=ym(it.start);const e0=it.end?ym(it.end)+1:nowM+1;return{...it,i,left:pct(s0),width:pct(e0)-pct(s0),period:`${fmtYM(it.start)} – ${it.end ? fmtYM(it.end) : r.now}`,last:i===r.items.length-1};});const nowPct=pct(nowM+1);const years=[];for(let y=Math.floor(start/12)+1;y*12<=nowM;y+=1)years.push({y,left:pct(y*12)});const n=list.length;$('career').innerHTML=`
+let DRIVE=null;function renderCareer(){const r=P.road;const list=P.careers;const d=new Date();const nowM=d.getFullYear()*12+d.getMonth();const start=ym(r.items[0].start);const total=nowM+3-start;const pct=(m)=>100-((m-start)/total)*100;const items=r.items.map((it,i)=>{const s0=ym(it.start);const e0=it.end?ym(it.end)+1:nowM+1;return{...it,i,right:pct(s0),left:pct(e0),width:pct(s0)-pct(e0),period:`${fmtYM(it.start)} – ${it.end ? fmtYM(it.end) : r.now}`,last:i===r.items.length-1};});const nowPct=pct(nowM+1);const years=[];for(let y=Math.floor(start/12)+1;y*12<=nowM;y+=1)years.push({y,left:pct(y*12)});const n=list.length;$('career').innerHTML=`
     <div class="drive" id="drive">
       <div class="drive-snaps" aria-hidden="true">${list.map(() => '<i class="drive-snap"></i>').join('')}</div>
       <div class="drive-pin">
         ${sechead('01', 'career')}
         <div class="drive-road">
           <div class="road-track">
-            ${items.map((it) => `<button type="button"class="road-label ${it.i % 2 ? 'row-b' : 'row-a'} ${it.last ? 'end' : ''} c-${it.color}"data-i="${it.i}"style="${it.last ? 'right:0' : `left:${it.left.toFixed(2)}%`}"><b>${esc(it.name)}</b><small>${esc(it.period)}</small></button>`).join('')}
+            ${items.map((it) => `<button type="button"class="road-label ${it.i % 2 ? 'row-b' : 'row-a'} ${it.last ? '' : 'end'} c-${it.color}"data-i="${it.i}"style="${it.last ? 'left:0' : `right:${(100 - it.right).toFixed(2)}%`}"><b>${esc(it.name)}</b><small>${esc(it.period)}</small></button>`).join('')}
             <div class="road-line">
               ${items.map((it) => `<i class="seg c-${it.color} ${it.end ? '' : 'open'}"data-i="${it.i}"style="left:${it.left.toFixed(2)}%;width:${it.width.toFixed(2)}%"></i>`).join('')}
               <i class="lane"></i>
@@ -57,7 +57,7 @@ let DRIVE=null;function renderCareer(){const r=P.road;const list=P.careers;const
           ${list.map((c, step) => `<article class="drive-item c-${esc(c.color)}${step === 0 ? ' on' : ''}"data-i="${n - 1 - step}"><div class="drive-text"><div class="beat-kicker has-logo"><span class="beat-logo"><img src="${esc(c.logo)}"alt="${esc(c.company)}"></span><span>${esc(c.kicker.split(' · ').slice(1).join(' · '))}</span></div><p class="drive-story">${emph(c.story)}</p><div class="drive-count"><b>${String(step+1).padStart(2,'0')}</b>/${String(n).padStart(2,'0')}</div></div><figure class="drive-panel">${panel(c)}</figure></article>`).join('')}
         </div>
       </div>
-    </div>`;const stops=items.map((it,i)=>(i===0?it.left+2:it.last?nowPct-3:it.left+it.width/2)).reverse();DRIVE={el:$('drive'),stops,nowPct,cur:-1};DRIVE.el.querySelectorAll('.road-label').forEach((b)=>b.addEventListener('click',()=>{const i=Number(b.dataset.i);const el=DRIVE.el;if(el.classList.contains('pinned')){goStop(i);}else{el.querySelector(`.drive-item[data-i="${i}"]`)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});}}));}
+    </div>`;const stops=items.map((it,i)=>(i===0?it.right-6:it.last?nowPct:it.left+it.width/2)).reverse();DRIVE={el:$('drive'),stops,nowPct,cur:-1};DRIVE.el.querySelectorAll('.road-label').forEach((b)=>b.addEventListener('click',()=>{const i=Number(b.dataset.i);const el=DRIVE.el;if(el.classList.contains('pinned')){goStop(i);}else{el.querySelector(`.drive-item[data-i="${i}"]`)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});}}));}
 const plain=(t)=>String(t??'').replace(/\[\[|\]\]/g,'');function renderStrengths(){$('strengths').innerHTML=sechead('02','strengths')+`
     <div class="str-cols">
       ${P.strengths.map((st, i) => `<article class="ui-card str-col"><span class="str-num">0${i+1}</span><h3>${esc(st.title)}</h3><p>${esc(st.desc)}</p><div class="str-links">${st.projects.map((pr)=>`

@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Syne:wght@800&display=swap">
-  <link rel="stylesheet" href="/static/theme.css?v=64">
-  <link rel="stylesheet" href="/static/style.css?v=64">
-  <link rel="stylesheet" href="/static/pages.css?v=64">
+  <link rel="stylesheet" href="/static/theme.css?v=66">
+  <link rel="stylesheet" href="/static/style.css?v=66">
+  <link rel="stylesheet" href="/static/pages.css?v=66">
   <script>try { if (localStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}</script>
 </head>
 <body class="subpage curtain">
@@ -45,8 +45,9 @@
   </div>
   <div class="hero-space" id="heroSpace"></div>
   <main class="sheet" id="sheet"><div class="page">
+    <div class="ui-toggle pfilter" id="pfilter" role="group" aria-label="회사별로 보기"><button type="button" class="on" data-company="" aria-pressed="true"><span data-ko="전체" data-en="All">전체</span> <span class="n">17</span></button><button type="button" data-company="쏘카" aria-pressed="false">쏘카 <span class="n">13</span></button><button type="button" data-company="웍스피어" aria-pressed="false">웍스피어 <span class="n">2</span></button><button type="button" data-company="벤더스터" aria-pressed="false">벤더스터 <span class="n">2</span></button></div>
     <section class="pgrid three" id="pgrid">
-    <a class="ui-card pcard" href="/projects/sopick-swap/">
+    <a class="ui-card pcard" href="/projects/sopick-swap/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/sopick-swap-iso.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Growth · 쏘카 · 2026 </div>
@@ -54,7 +55,7 @@
         <p>쏘픽 고객이 구독을 해지하지 않고 같은 계약 안에서 차만 바꿀 수 있게, 오퍼교체와 상시교체 두 가지 방식을 만들어 출시했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/sopick-launch/">
+    <a class="ui-card pcard" href="/projects/sopick-launch/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/sopick-launch.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Growth · 쏘카 · 2026 </div>
@@ -62,7 +63,7 @@
         <p>2026년 10월 1일 문을 연 장기 구독 쏘픽에 오픈과 함께 합류해, 빠른 출시로 미뤄 둔 일감을 한 보드로 모아 순서를 정하고, 운영 기능과 계약 화면을 고쳐 서비스를 안정시켰습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/klik-korean/">
+    <a class="ui-card pcard" href="/projects/klik-korean/" data-company="웍스피어">
       <div class="pcard-thumb"><img src="/static/img/klik-korean.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">AI · 웍스피어 · 2026 </div>
@@ -70,7 +71,7 @@
         <p>TOPIK 급수만으로는 알 수 없던 외국인 지원자의 실제 한국어 회화 능력을, 30초 음성 녹음을 AI로 분석한 5등급 ‘인증 뱃지’로 보여 주는 기능을 업계 최초로 출시했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/klik/">
+    <a class="ui-card pcard" href="/projects/klik/" data-company="웍스피어">
       <div class="pcard-thumb"><img src="/static/img/klik.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Growth · 웍스피어 · 2026 </div>
@@ -78,7 +79,7 @@
         <p>초기 서비스 안정성과 공고 탐색 경험을 개선하고, 퍼널·코호트 데이터로 지원 전환의 병목을 풀어 주요 CVR과 월 지원자 수를 높였습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/smartkey/">
+    <a class="ui-card pcard" href="/projects/smartkey/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/smartkey.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">V2X · 쏘카 · 2024 </div>
@@ -86,7 +87,7 @@
         <p>스마트키 접근성과 작동 안정성을 높이기 위해 안드로이드용 노티 위젯을 리팩토링하고 UX를 개선했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/pickup/">
+    <a class="ui-card pcard" href="/projects/pickup/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/pickup.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">V2X · 쏘카 · 2025 </div>
@@ -94,7 +95,7 @@
         <p>오프라인 차량의 위치·배송 정보를 앱에서 확인하기 어려운 정보 비대칭을 관제·배송 데이터 연동으로 풀어, 인수 과정의 CS와 운영비를 줄였습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/chatbot/">
+    <a class="ui-card pcard" href="/projects/chatbot/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/chatbot-screens.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">AI · 쏘카 · 2024 </div>
@@ -102,7 +103,7 @@
         <p>챗봇 고객의 75%가 상담원을 찾던 레거시 챗봇을, 예약 상태를 아는 LLM 상담과 운영팀이 직접 고치는 어드민으로 바꿔 채팅상담 전환율을 24%p 낮췄습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/settlement/">
+    <a class="ui-card pcard" href="/projects/settlement/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/settlement.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Automation · 쏘카 · 2024 </div>
@@ -110,7 +111,7 @@
         <p>새 서비스가 늘며 월평균 31%까지 생기던 수기 정산을, 정산 조건을 클러스터로 다시 나눈 자동생성 로직과 시뮬레이터로 줄였습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/fines/">
+    <a class="ui-card pcard" href="/projects/fines/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/fines-screens.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Automation · 쏘카 · 2024 </div>
@@ -118,7 +119,7 @@
         <p>실물 고지서를 잃어버리면 받을 수 없던 과태료를, 위택스와 연동한 &#x27;쏘카용 과태료 고지서&#x27;와 자동 청구 로직으로 바꿔 연간 2.6억 원의 미수금을 막았습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/coupon/">
+    <a class="ui-card pcard" href="/projects/coupon/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/coupon-photo.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Revenue · 쏘카 · 2023 </div>
@@ -126,7 +127,7 @@
         <p>고객은 더 싸게, 쏘카는 예약 취소로 인한 가동률 하락을 막도록 환불불가 쿠폰 정책을 더하고 취소수수료를 개편해 연간 48억 원 매출에 기여했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/waiver/">
+    <a class="ui-card pcard" href="/projects/waiver/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/waiver.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Revenue · 쏘카 · 2023 </div>
@@ -134,7 +135,7 @@
         <p>사고가 나면 자기부담금과 후속 조치가 걱정이던 고객을 위해, 자차 수리비와 긴급출동 비용 부담이 없는 &#x27;자기부담금 제로&#x27; 면책 상품을 출시해 연간 13억 원 매출에 기여했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/carwash/">
+    <a class="ui-card pcard" href="/projects/carwash/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/carwash-lot.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Ops · 쏘카 · 2023 </div>
@@ -142,7 +143,7 @@
         <p>차량 내부 상태를 알 길이 없어 세차 불량 접수가 월 이용의 13%까지 쌓이던 문제를, 고객이 찍은 차 내부 사진과 AI 세차 자동 요청으로 풀어 불량 접수를 42% 줄였습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/disaster/">
+    <a class="ui-card pcard" href="/projects/disaster/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/disaster-radar.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Ops · 쏘카 · 2023 </div>
@@ -150,7 +151,7 @@
         <p>2022년 폭우·태풍으로 차량 147대가 전손된 뒤, 공공데이터로 위험을 먼저 알리고 대응할 주차장을 짚어 주는 시스템과 전사 대응 프로세스를 만들어 이후 재해 시즌 전손을 0대로 막았습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/fms/">
+    <a class="ui-card pcard" href="/projects/fms/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/fms-light.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">Ops · 쏘카 · 2022 </div>
@@ -158,7 +159,7 @@
         <p>쏘카 차량의 STS 단말을 플랫폼화한 B2B 차량 관제 신사업에서, 물류사 관제자가 많은 화물차의 상태를 한눈에 판단하도록 관제 우선순위와 대시보드 정보구조를 설계해 출시했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/pleos/">
+    <a class="ui-card pcard" href="/projects/pleos/" data-company="쏘카">
       <div class="pcard-thumb"><img src="/static/img/pleos.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">V2X · 쏘카 · 2025 </div>
@@ -166,7 +167,7 @@
         <p>차를 타는 동안에는 스마트키 도구로만 쓰이던 쏘카 앱을 차량 인포테인먼트(IVI) 안으로 들여, 현대차그룹과 함께 초개인화 차내 경험을 검증했습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/promosk/">
+    <a class="ui-card pcard" href="/projects/promosk/" data-company="벤더스터">
       <div class="pcard-thumb"><img src="/static/img/promosk.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">0 to 1 · 벤더스터 · 2021 </div>
@@ -174,7 +175,7 @@
         <p>코로나로 판촉 인력이 사라진 주류 매장에, QR 티켓을 비추면 판촉물이 나오는 키오스크를 제안·구축해 10~15%이던 프로모션 응답률을 50%까지 끌어올렸습니다.</p>
       </div>
     </a>
-    <a class="ui-card pcard" href="/projects/flaground/">
+    <a class="ui-card pcard" href="/projects/flaground/" data-company="벤더스터">
       <div class="pcard-thumb"><img src="/static/img/flaground-photo.jpg" alt="" loading="lazy"><span class="pcard-go"><svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg></span></div>
       <div class="pcard-body">
         <div class="kicker">0 to 1 · 벤더스터 · 2022 </div>
@@ -184,6 +185,6 @@
     </a></section>
   </div></main>
   <div class="outro-space" aria-hidden="true"></div>
-  <script src="/static/site.js?v=64"></script>
+  <script src="/static/site.js?v=66"></script>
 </body>
 </html>
