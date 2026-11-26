@@ -2,7 +2,6 @@ const $=(id)=>document.getElementById(id);const esc=(s)=>String(s??'').replace(/
 return over;}
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;let lang=store.get('lang')==='en'?'en':'ko';let P=null;let U=null;const ICON={arrow:'<svg class="i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9.5 8H16v6.5"/></svg>',mail:'<svg class="i-line" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>',linkedin:'<svg class="i-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11.2 22 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21H10V9Z"/></svg>',right:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>',check:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8.5 3 3 7-7"/></svg>',chev:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>',sun:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.5"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6 16 16M4 16l1.4-1.4M14.6 5.4 16 4"/></svg>',moon:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 12.5A7 7 0 0 1 7.5 3.5a7 7 0 1 0 9 9Z"/></svg>',};const contactIcons=(links)=>links.map((l)=>{const icon=/linkedin/i.test(l.href)?ICON.linkedin:ICON.mail;const tgt=l.href.startsWith('mailto:')?'':' target="_blank" rel="noopener"';return`<a class="icon-link" href="${esc(l.href)}"${tgt} aria-label="${esc(l.label)}" title="${esc(l.text || l.label)}">${icon}</a>`;}).join('');const todo=(t)=>(t?`<span class="ui-tag amber todo">${esc(U.todo)} · ${esc(t)}</span>`:'');const list=(items)=>(items?.length?`<ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`:'');const ext=(l)=>(l?`<a class="ext" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.text)} ${ICON.arrow}</a>`:'');const emph=(text)=>esc(text).replace(/\[\[(.*?)\]\]/g,'<strong>$1</strong>');const sechead=(num,key,note)=>`
   <div class="ui-sechead">
-    <span class="sec-num">${num}</span>
     <h2 class="ui-sectitle sec-en">${esc(SECTION_EN[key])}</h2>
     ${lang === 'ko' ? `<span class="sec-ko">${esc(U.sections[key])}</span>` : ''}
     ${note ? `<span class="ui-secnote">${esc(note)}</span>` : ''}
@@ -10,7 +9,7 @@ const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches
 function renderHero(){const p=P.profile;$('hero').innerHTML=`
     <div class="hero-text">
       <h1 class="ui-title">${esc(p.headline)}</h1>
-      <p class="hero-intro">${esc(p.intro)}<span class="caret" aria-hidden="true"></span></p>
+      <p class="hero-intro">${esc(p.intro)}</p>
       ${todo(p.introTodo)}
     </div>
     <aside class="ui-card profile">
@@ -60,7 +59,7 @@ let DRIVE=null;function renderCareer(){const r=P.road;const list=P.careers;const
     </div>`;const stops=items.map((it,i)=>(i===0?it.right-6:it.last?nowPct:it.left+it.width/2)).reverse();DRIVE={el:$('drive'),stops,nowPct,cur:-1};DRIVE.el.querySelectorAll('.road-label').forEach((b)=>b.addEventListener('click',()=>{const i=Number(b.dataset.i);const el=DRIVE.el;if(el.classList.contains('pinned')){goStop(i);}else{el.querySelector(`.drive-item[data-i="${i}"]`)?.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});}}));}
 const plain=(t)=>String(t??'').replace(/\[\[|\]\]/g,'');function renderStrengths(){$('strengths').innerHTML=sechead('02','strengths')+`
     <div class="str-cols">
-      ${P.strengths.map((st, i) => `<article class="ui-card str-col"><span class="str-num">0${i+1}</span><h3>${esc(st.title)}</h3><p>${esc(st.desc)}</p><div class="str-links">${st.projects.map((pr)=>`
+      ${P.strengths.map((st, i) => `<article class="ui-card str-col"><h3>${esc(st.title)}</h3><p>${esc(st.desc)}</p><div class="str-links">${st.projects.map((pr)=>`
               <a class="str-link${pr.wide ? ' wide' : ''}" href="projects/${esc(pr.project)}/">
                 <span class="str-thumb"><img src="${esc(pr.img)}" alt="" loading="lazy"></span>
                 <span class="str-link-text"><b>${esc(pr.title)}</b><small>${esc(pr.company)} · ${esc(pr.period)}</small></span>
